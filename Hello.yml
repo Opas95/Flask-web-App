@@ -29,6 +29,7 @@
       become: yes
       
     - name: Delete app directory if it exists
+      become: yes
       file:
         path: /opt/myapp
         state: absent
