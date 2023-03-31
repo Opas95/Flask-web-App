@@ -28,11 +28,11 @@
       command: /bin/bash -c "source /opt/myapp/env/bin/activate"
       become: yes
       
-    - name: Delete app directory if it exists
-      become: yes
-      file:
-        path: /opt/myapp
-        state: absent
+    #- name: Delete app directory if it exists
+     # become: yes
+      #file:
+        #path: /opt/myapp
+        #state: absent
         #become: yes
 
     - name: Clone Git repository
