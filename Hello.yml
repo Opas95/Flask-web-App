@@ -27,6 +27,11 @@
     - name: Activate virtual environment
       command: /bin/bash -c "source /opt/myapp/env/bin/activate"
       become: yes
+      
+    - name: Delete app directory if it exists
+      file:
+        path: /opt/myapp
+        state: absent
 
     - name: Clone Git repository
       git:
