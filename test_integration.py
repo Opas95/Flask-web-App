@@ -5,5 +5,3 @@ def test_homepage():
     response = client.get('/')
     assert response.status_code == 200
     assert b'I am almost a Devops Engineer!' in response.data
-
-
