@@ -41,7 +41,6 @@
         repo: https://github.com/Opas95/Flask-web-App.git
         dest: /opt/myapp
         clone: no
-      #force: yes
       become: yes
       
     - name: Copy app.py to /opt/myapp
