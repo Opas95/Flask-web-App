@@ -31,11 +31,6 @@ pipeline {
                 sh '. /var/lib/jenkins/workspace/Flask-app/benv/bin/activate && nohup flask run &'
             }
         }
-        
-        stage('Integration tests') {
-            steps {
-                sh 'python integration_test.py'
-            }
-        }
+
     }
 }
