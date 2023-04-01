@@ -41,7 +41,7 @@ pipeline {
         }
         stage('slack notification') {
             steps {
-               slackSend()
+               slackSend message: 'This job was successfully built tested and deployed ansible'
             }
         }
 
