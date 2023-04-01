@@ -28,19 +28,21 @@
       command: /bin/bash -c "source /opt/myapp/env/bin/activate"
       become: yes
       
-    #- name: Delete app directory if it exists
-     # become: yes
-      #file:
-        #path: /opt/myapp
-        #state: absent
-        #become: yes
+    - name: Delete app directory if it exists
+      become: yes
+      file:
+        path: /opt/myapp*
+        state: absent
+        become: yes
+        tags: cleanup
+       
 
     - name: Clone Git repository
       git:
         repo: https://github.com/Opas95/Flask-web-App.git
         dest: /opt/myapp
         update: yes
-      force: yes
+      #force: yes
       become: yes
       
     - name: Install dependencies using requirements.txt
