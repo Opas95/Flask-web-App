@@ -3,7 +3,7 @@ pipeline {
     
     environment {
         FLASK_APP = 'app.py'
-       
+      
     }
     
     stages {
@@ -17,7 +17,6 @@ pipeline {
             steps {
                 sh 'virtualenv benv'
                 sh '. /var/lib/jenkins/workspace/Flask-app/benv/bin/activate && pip install flask'
-                
             }
         }
         
@@ -27,16 +26,15 @@ pipeline {
             }
         }
         
-        stage('start flask app') {
+        stage('Start Flask app') {
             steps {
                 sh '. /var/lib/jenkins/workspace/Flask-app/benv/bin/activate && nohup flask run &'
             }
-        } 
- 
+        }
         
-        stage ('post build') {
+        stage('Integration tests') {
             steps {
-                ansiblePlaybook credentialsId: 'JenkinsAns', installation: 'Ansible', inventory: 'inventory.ini', playbook: 'Hello.yml '
+                sh 'python integration_test.py'
             }
         }
     }
