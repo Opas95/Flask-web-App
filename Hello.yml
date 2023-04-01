@@ -50,13 +50,12 @@
       become: yes
 
       
-    - name: Install dependencies using requirements.txt
-      pip:
-        #requirements: /opt/myapp/requirements.txt
-        executable: /opt/myapp/env/bin/pip
+  #  - name: Install dependencies using requirements.txt
+    #  pip:
+       #requirements: /opt/myapp/requirements.txt
+    #    executable: /opt/myapp/env/bin/pip
   
     - name: Install flask using pip
-      #var: ansible_command
       pip:
         name: flask
         executable: /opt/myapp/env/bin/pip
