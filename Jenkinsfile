@@ -29,6 +29,9 @@ pipeline {
         stage('Start Flask app') {
             steps {
                 sh '. /var/lib/jenkins/workspace/Flask-app/benv/bin/activate && nohup flask run &'
+                sh '. /var/lib/jenkins/workspace/Flask-app/benv/bin/activate && nohup flask run &'
+                sh 'sleep 10' // wait for Flask app to start up
+                sh 'curl http://localhost:5000' // display contents of app.py
             }
         }
 
