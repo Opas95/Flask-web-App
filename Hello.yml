@@ -43,12 +43,12 @@
         clone: no
       become: yes
       
-    - name: Copy app.py to /opt/myapp
-      copy: 
-        src: 
-          - app.py
-          - requirements.txt
-        dest: /opt/myapp
+    - name: Copy app.py and requirements.txt to /opt/myapp
+      copy:
+        src:
+          - /path/to/app.py
+          - /path/to/requirements.txt
+        dest: /opt/myapp/
       become: yes
 
       
