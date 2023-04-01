@@ -33,6 +33,12 @@ pipeline {
                 sh 'curl http://44.211.231.158:5000' // display contents of app.py
             }
         }
+        
+        stage('post build') {
+            steps {
+               ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'dev.ini', playbook: 'Hello.yml'
+            }
+        }
 
     }
 }
