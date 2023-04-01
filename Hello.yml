@@ -40,9 +40,16 @@
       git:
         repo: https://github.com/Opas95/Flask-web-App.git
         dest: /opt/myapp
-        update: no
+        clone: no
       #force: yes
       become: yes
+      
+    - name: Copy app.py to /opt/myapp
+      copy:
+      src: app.py
+      dest: /opt/myapp
+    become: yes
+
       
     - name: Install dependencies using requirements.txt
       pip:
