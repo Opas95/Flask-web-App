@@ -39,7 +39,7 @@
       git:
         repo: https://github.com/Opas95/Flask-web-App.git
         dest: /opt/myapp
-       update: yes
+        update: yes
       become: yes
       
     - name: Install dependencies using requirements.txt
