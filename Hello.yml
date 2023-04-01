@@ -45,8 +45,8 @@
       
     - name: Copy app.py to /opt/myapp
       copy: 
-      src: /path/to/app.py
-      dest: /opt/myapp
+        src: app.py
+        dest: /opt/myapp
       become: yes
 
       
