@@ -45,16 +45,14 @@
       
     - name: Copy app.py and requirements.txt to /opt/myapp
       copy:
-        src:
-          - /path/to/app.py
-          - /path/to/requirements.txt
+        src: app.py
         dest: /opt/myapp/
       become: yes
 
       
     - name: Install dependencies using requirements.txt
       pip:
-        requirements: /opt/myapp/requirements.txt
+        #requirements: /opt/myapp/requirements.txt
         executable: /opt/myapp/env/bin/pip
   
     - name: Install flask using pip
