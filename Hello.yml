@@ -45,7 +45,9 @@
       
     - name: Copy app.py to /opt/myapp
       copy: 
-        src: app.py
+        src: 
+          - app.py
+          - requirements.txt
         dest: /opt/myapp
       become: yes
 
