@@ -31,7 +31,7 @@
     - name: Delete app directory if it exists
       become: yes
       file:
-        path: /opt/myapp*
+        path: /opt/myapp
         state: absent
         become: yes
         #tags: cleanup   
