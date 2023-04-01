@@ -29,19 +29,14 @@ pipeline {
         
         stage('start flask app') {
             steps {
-                sh '. /var/lib/jenkins/workspace/Flask-app/benv/bin/activate && flask run &'
+                sh '. /var/lib/jenkins/workspace/Flask-app/benv/bin/activate && nohup flask run &'
             }
         } 
-        
-        stage('Deploy with Gunicorn') {
-            steps {
-                sh 'source /var/lib/jenkins/workspace/Flask-app/benv/bin/activate && gunicorn app:app &'
-            }
-        }
+ 
         
         stage ('post build') {
             steps {
-                ansiblePlaybook credentialsId: 'JenkinsAns', installation: 'Ansible', inventory: '/var/lib/jenkins/workspace/Flask-app/inventory.ini', playbook: '/var/lib/jenkins/workspace/Flask-app/Hello.yml '
+                ansiblePlaybook credentialsId: 'JenkinsAns', installation: 'Ansible', inventory: 'inventory.ini', playbook: 'Hello.yml '
             }
         }
     }
