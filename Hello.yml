@@ -34,8 +34,7 @@
         path: /opt/myapp*
         state: absent
         become: yes
-        tags: cleanup
-       
+        tags: cleanup   
 
     - name: Clone Git repository
       git:
