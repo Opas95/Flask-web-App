@@ -26,6 +26,7 @@ pipeline {
             }
         }
         
+        
         stage('Start Flask app') {
             steps {
                 sh '. /var/lib/jenkins/workspace/Flask-app/benv/bin/activate && nohup flask run --host=0.0.0.0 &'
@@ -34,14 +35,27 @@ pipeline {
             }
         }
         
-        stage('post build') {
+         stage('slack notification') {
+            steps {
+               slackSend message: 'This application has passed the unit test. @manager please kindly approve app deployment'
+            }
+        }
+        
+        stage ('Manager Approval Required.') {
+            steps {
+                echo "Taking approval from Manager before QA Deployment"
+                timeout(time: 1, unit: 'DAYS') {
+                input message: 'Do you want to deploy this application?', submitter: 'admin'
+        }
+      }
+        stage('deployment') {
             steps {
                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'dev.ini', playbook: 'Hello.yml'
             }
         }
         stage('slack notification') {
             steps {
-               slackSend message: 'This job was successfully built tested and deployed ansible'
+               slackSend message: 'flask app has been succefully deployed to prod'
             }
         }
 
