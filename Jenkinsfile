@@ -3,7 +3,7 @@ pipeline {
     
     environment {
         FLASK_APP = 'app.py'
-        GUNICORN_CMD_ARGS = '--bind=0.0.0.0:8000  --workers=2 --timeout=60'
+       
     }
     
     stages {
@@ -17,8 +17,7 @@ pipeline {
             steps {
                 sh 'virtualenv benv'
                 sh '. /var/lib/jenkins/workspace/Flask-app/benv/bin/activate && pip install flask'
-                sh 'pip install gunicorn'
-                sh '. /var/lib/jenkins/workspace/Flask-app/benv/bin/activate && pip install gunicorn'
+                
             }
         }
         
