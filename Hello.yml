@@ -44,8 +44,8 @@
       become: yes
       
     - name: Copy app.py to /opt/myapp
-      copy:  null
-      src: /home/ubuntu/Flask-web-App/app.py
+      copy: 
+      src: /path/to/app.py
       dest: /opt/myapp
       become: yes
 
