@@ -48,7 +48,7 @@
       copy:
       src: app.py
       dest: /opt/myapp
-    become: yes
+      become: yes
 
       
     - name: Install dependencies using requirements.txt
