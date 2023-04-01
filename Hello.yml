@@ -40,7 +40,7 @@
       git:
         repo: https://github.com/Opas95/Flask-web-App.git
         dest: /opt/myapp
-        update: yes
+        update: no
       #force: yes
       become: yes
       
