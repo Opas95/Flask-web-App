@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment {
-        FLASK_APP = 'app.py'
+        FLASK_APP = 'app.py'  
     }
     
     stages {
@@ -33,7 +33,7 @@ pipeline {
             }
         }
         
-        stage('JaCoCo') {
+        stage ('JaCoCo') {
             steps {
                 jacoco()
             }
@@ -45,7 +45,7 @@ pipeline {
             }
         }
         
-        stage('Manager Approval Required.') {
+        stage ('Manager Approval Required.') {
             steps {
                 echo "Taking approval from Manager before QA Deployment"
                 timeout(time: 1, unit: 'DAYS') {
@@ -62,7 +62,7 @@ pipeline {
         
         stage('slack notification') {
             steps {
-                slackSend message: 'flask app has been successfully deployed to prod'
+                slackSend message: 'flask app has been succefully deployed to prod'
             }
         }
     }
