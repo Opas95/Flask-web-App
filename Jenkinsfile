@@ -39,6 +39,11 @@ pipeline {
                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'dev.ini', playbook: 'Hello.yml'
             }
         }
+        stage('slack notification') {
+            steps {
+               slackSend()
+            }
+        }
 
     }
 }
