@@ -39,7 +39,7 @@ pipeline {
             }
         }
         
-        stage('slack notification') {
+        stage('message to manager') {
             steps {
                 slackSend message: 'This application has passed the unit test. @manager please kindly approve app deployment'
             }
