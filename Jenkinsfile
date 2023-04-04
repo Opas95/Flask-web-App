@@ -29,7 +29,7 @@ pipeline {
             steps {
                 sh '. /var/lib/jenkins/workspace/Flask-app/benv/bin/activate && nohup flask run --host=0.0.0.0 &'
                 sh 'sleep 5s' // wait for Flask app to start up
-                sh 'curl http://44.203.101.23:5000' // display contents of app.py
+                sh 'curl http://44.213.107.67:5000' // display contents of app.py
             }
         }
         
